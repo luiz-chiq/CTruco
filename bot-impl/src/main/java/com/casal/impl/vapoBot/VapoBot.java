@@ -24,21 +24,22 @@ public class VapoBot implements BotServiceProvider {
     public CardToPlay chooseCard(GameIntel intel) {
         System.out.println("---------------");
         System.out.println("getCards: " + intel.getCards());
-        System.out.println("getOpenCards: " + intel.getOpenCards());
-        System.out.println("getVira: " + intel.getVira());
-        System.out.println("getHandPoints: " + intel.getHandPoints());
-        System.out.println("getOpponentScore: " + intel.getOpponentScore());
-        System.out.println("getScore: " + intel.getScore());
-        System.out.println("getOpponentCard: " + intel.getOpponentCard());
-        System.out.println("getRoundResults: " + intel.getRoundResults());
-
-        System.out.println(" average (?): " + getAverageCardValue(intel));
+//        System.out.println("getOpenCards: " + intel.getOpenCards());
+//        System.out.println("getVira: " + intel.getVira());
+//        System.out.println("getHandPoints: " + intel.getHandPoints());
+//        System.out.println("getOpponentScore: " + intel.getOpponentScore());
+//        System.out.println("getScore: " + intel.getScore());
+//        System.out.println("getOpponentCard: " + intel.getOpponentCard());
+//        System.out.println("getRoundResults: " + intel.getRoundResults());
+//
+//        System.out.println(" average (?): " + getAverageCardValue(intel));
 
         if (intel.getOpponentCard().isPresent()) {
             TrucoCard opponentCard = intel.getOpponentCard().get();
         }
 
         System.out.println("your highest card: " + getYourHighestCard(intel));
+        System.out.println("your lowest card: " + getYourLowestCard(intel));
         return CardToPlay.of(intel.getCards().get(0));
     }
 
@@ -70,5 +71,17 @@ public class VapoBot implements BotServiceProvider {
         }
 
         return highestCard;
+    }
+
+    private TrucoCard getYourLowestCard(GameIntel intel) {
+        TrucoCard lowestCard = intel.getCards().get(0);
+
+        for (TrucoCard card : intel.getCards()) {
+            if (lowestCard.relativeValue(intel.getVira()) > card.relativeValue(intel.getVira())) {
+                lowestCard = card;
+            }
+        }
+
+        return lowestCard;
     }
 }
