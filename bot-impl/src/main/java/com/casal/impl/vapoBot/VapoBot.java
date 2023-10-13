@@ -61,7 +61,7 @@ public class VapoBot implements BotServiceProvider {
         return average;
     }
 
-    private TrucoCard getYourHighestCard(GameIntel intel){
+    public TrucoCard getYourHighestCard(GameIntel intel){
         TrucoCard highestCard = intel.getCards().get(0);
 
         for (TrucoCard card : intel.getCards()) {
@@ -73,7 +73,7 @@ public class VapoBot implements BotServiceProvider {
         return highestCard;
     }
 
-    private TrucoCard getYourLowestCard(GameIntel intel) {
+    public TrucoCard getYourLowestCard(GameIntel intel) {
         TrucoCard lowestCard = intel.getCards().get(0);
 
         for (TrucoCard card : intel.getCards()) {
