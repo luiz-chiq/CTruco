@@ -25,7 +25,7 @@ public class VapoBot implements BotServiceProvider {
         else if (checkHowManyOpponentCardsAreBad(intel) > 1) {
             return true;
         }
-        // aaaaa
+        // aaasdasdsadasdasdds
         return false;
     }
 
