@@ -24,7 +24,7 @@ public class Dojo{
         final var numBots = botNames.size();
         final var times = 200; //To improve accuracy, increase the value of 'times'
 
-        final var botName = "VapoBot";
+        final var botName = "SimpleBot";
         final var bot1 = botNames.indexOf(botName); //
         if (bot1 == -1) throw new Exception("Set a valid bot name");
 
